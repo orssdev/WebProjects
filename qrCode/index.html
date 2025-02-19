@@ -7,8 +7,15 @@
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-    <div class="qrCodeContainer">
-        <canvas id="qrCode" width="580" height="580"></canvas>
+    <div id="wrapper">
+        <h1 id="title">Version 3 QR Code Generator</h1>
+        <div>
+            <input placeholder="enter URL" id="urlInput" type="text">
+            <button id="urlInput" type="button">Generate</button>
+        </div>
+        <div class="qrCodeContainer">
+            <canvas id="qrCode" width="660" height="660"></canvas>
+        </div>
     </div>
     <script src="scripts/scripts.js"></script>
 </body>

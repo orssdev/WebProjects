@@ -4,8 +4,32 @@
 }
 
 body {
-    background-color: #333333;
+    background-color: black;
+}
 
+div#wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    width: 100vw;
+    height: 100vh;
+}
+
+input#urlInput {
+    width: 300px;
+    height: 25px;
+}
+
+button#urlInput {
+    width: auto;
+    height: 30px;
+}
+
+h1#title {
+    background-color: black;
+    color: white;
 }
 
 div.qrCodeContainer {
@@ -13,16 +37,14 @@ div.qrCodeContainer {
     justify-content: center;
     align-items: center;
     background-color: black;
-    width: 100vw;
-    height: 100vh;
 }
 
 canvas#qrCode {
     background-color: white;
 }
 
-@media (width < 600px){
+@media (width < 700px){
     canvas#qrCode {
-        width: 290px;
+        width: 330px;
     }
 }
