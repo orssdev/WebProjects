@@ -47,4 +47,7 @@ canvas#qrCode {
     canvas#qrCode {
         width: 330px;
     }
+    h1#title {
+        font-size: 28px;
+    }
 }
