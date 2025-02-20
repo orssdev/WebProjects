@@ -2,21 +2,10 @@ const canvas = document.getElementById("qrCode");
 const ctx = canvas.getContext("2d");
 const startx = 40;
 const starty = 40;
-const moduleSize = 29;
-const qrCode = [];
+export const moduleSize = 29;
 let left = true;
 let up = true;
 let down = false;
-let url = "https://github.com/orss01";
-
-for(let i = 0; i < moduleSize; i++)
-{
-    qrCode.push([]);
-    for(let j = 0; j < moduleSize; j++)
-    {
-        qrCode[i].push("p");
-    }
-}
 
 function drawSquare(x,y)
 {
@@ -59,39 +48,6 @@ function drawPinkSquare(x,y)
     ctx.fillStyle = "Pink";
     ctx.fillRect(startx + (20 * y), starty + (x * 20), 20, 20);
 }
-
-
-function toBinary(input)
-{
-    if(input == 1)
-    {
-        return "1";
-    }
-    let bit = input % 2;
-    return toBinary(Math.floor(input / 2)) + bit;
-}
-
-
-function urlToBytes(url)
-{
-    let bytes = "";
-    for(let i = 0; i < url.length; i++)
-    {
-        let byte = toBinary(url.charCodeAt(i));
-        let byteLength = byte.length
-        if (byteLength < 8)
-        {
-            for(let j = 0; j < (8 - byteLength); j++)
-            {
-                byte = "0" + byte;
-            }
-        }
-        bytes += byte;
-    }
-
-    return bytes;
-}
-
 /*
     @param qrCode - 2D array of the qrCode layout
 */
@@ -229,15 +185,12 @@ function formatBits(qrCode)
 /*
     @param qrCode - 2D array of the qrCode layout
 */
-function data(qrCode)
+function insertData(qrCode, data)
 {
-    let data = "0100" + urlToBytes(url) + "0000";
     let row = moduleSize - 1;
     let col = moduleSize - 1;
     for(let i = 0; i < data.length; i++)
     {
-        console.log("Row " + row);
-        console.log("Col " + col);
         if(up)
         {
             qrCode[row][col] = data.charAt(i);
@@ -265,6 +218,10 @@ function data(qrCode)
             if(qrCode[row][col] == "fb0" || qrCode[row][col] == "fb1")
             {
                 col--;
+                if(qrCode[row + 1][col - 1] == "tp0")
+                {
+                    col--;
+                }
                 qrCode[++row][--col] = data.charAt(++i);
                 qrCode[row][--col] = data.charAt(++i);
                 up = false;
@@ -308,11 +265,34 @@ function data(qrCode)
             {
                 row--;
                 col--;
-                qrCode[row][--col] = data.charAt(++i);
-                qrCode[row][--col] = data.charAt(++i);
+                if(qrCode[row][--col] == "fb0" || qrCode[row][col] == "fb1")
+                {
+                    row -= 8;
+                    qrCode[row][col] = data.charAt(++i);
+                    qrCode[row][--col] = data.charAt(++i);
+                }
+                else
+                {
+                    qrCode[row][col] = data.charAt(++i);
+                    qrCode[row][--col] = data.charAt(++i);
+                }
+                row--;
+                col++;
                 up = true;
                 down = false;
-                left = false;
+                left = true;
+            }
+            if(qrCode[row][col] == "fp0" || qrCode[row][col] == "fp1")
+            {
+                row--;
+                col--;
+                qrCode[row][--col] = data.charAt(++i);
+                qrCode[row][--col] = data.charAt(++i);
+                row--;
+                col++;
+                up = true;
+                down = false;
+                left = true;
             }
             if(qrCode[row][col] == "ap1")
             {
@@ -326,13 +306,13 @@ function data(qrCode)
     }
 }
 
-function loadQRCode(qrCode) 
+function loadQRCode(qrCode, data) 
 {
     timingPattern(qrCode);
     finderPattern(qrCode);
     alignmentPattern(qrCode);
     formatBits(qrCode);
-    data(qrCode);
+    insertData(qrCode, data);
 }
 
 function drawQRCode(qrCode)
@@ -377,14 +357,8 @@ function drawQRCode(qrCode)
     }
 }
 
-loadQRCode(qrCode);
-drawQRCode(qrCode);
-
-let burl = "0100" + urlToBytes(url) + "0000";
-
-for(let e of qrCode)
+export function makeQRCode(qrCode, data)
 {
-    console.log(e);
+    loadQRCode(qrCode, data);
+    drawQRCode(qrCode);
 }
-console.log(burl);
-console.log(burl.length);

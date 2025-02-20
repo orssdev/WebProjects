@@ -9,7 +9,12 @@
 </head>
 <body>
     <div id="wrapper">
-        <h1 id="title">Version 3 QR Code Generator</h1>
+        <div id="h1Container">
+            <h1 id="title">Version: 3</h1>
+            <h1 id="title">EC: Low</h1>
+            <h1 id="title">Mode: Byte</h1>
+            <h1 id="title">QR Code Generator</h1>
+        </div>
         <div>
             <input placeholder="enter URL" id="urlInput" type="text">
             <button id="urlInput" type="button">Generate</button>
@@ -18,6 +23,6 @@
             <canvas id="qrCode" width="660" height="660"></canvas>
         </div>
     </div>
-    <script src="scripts/scripts.js"></script>
+    <script src="scripts/main.js" type="module"></script>
 </body>
 </html>

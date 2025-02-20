@@ -14,7 +14,14 @@ div#wrapper {
     justify-content: center;
     gap: 25px;
     width: 100vw;
-    height: 100vh;
+    height: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+div#h1Container {
+    display: flex;
+    gap: 10px;
 }
 
 input#urlInput {
@@ -43,9 +50,14 @@ canvas#qrCode {
     background-color: white;
 }
 
-@media (width < 700px){
+@media (width < 750px){
     canvas#qrCode {
         width: 330px;
+    }
+    div#h1Container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
     h1#title {
         font-size: 28px;
