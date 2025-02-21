@@ -14,7 +14,7 @@ div#wrapper {
     flex-direction: column;
     gap: 25px;
     width: 100vw;
-    height: 110vh;
+    height: 100vh;
     background-color: #333333;
 }
 
@@ -36,22 +36,11 @@ tr:last-child {
 }
 
 td {
-    background-color: white;
     color: black;
     width: 60px;
     height: 60px;
     text-align: center;
     border: 3px solid black;
-}
-
-td:hover {
-    background-color: #8b0000;
-    color: white;
-    cursor: pointer;
-}
-
-td:active {
-    background-color: #ff5555;
 }
 
 td:nth-child(3n) {
@@ -62,6 +51,34 @@ td:last-child {
     border-right: none;
 }
 
+div#inputContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+div#input {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    align-content: center;
+}
+
+.box {
+    background-color: white;
+    font-size: 2em;
+}
+
+.box:hover {
+    background-color: #8b0000;
+    color: white;
+    cursor: pointer;
+}
+
+.box:active {
+    background-color: #ff5555;
+}
 
 @media (width < 600px)
 {
@@ -69,4 +86,15 @@ td:last-child {
     width: 40px;
     height: 40px;
    }
+
+   div#inputContainer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80vw;
+}
+
+div#input {
+    width: 40px;
+    height: 40px;
+}
 }

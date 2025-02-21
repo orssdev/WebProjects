@@ -9,6 +9,7 @@ for (let i = 0; i < 9; i++)
     {
         let cell = row.insertCell(j);
         cell.setAttribute("id", (i + 1) + "" + (j + 1));
+        cell.setAttribute("class", "box");
         // cell.innerHTML = (i + 1) + " " +  (j + 1);
     }
 }
