@@ -4,3 +4,21 @@ https://www.thonky.com/qr-code-tutorial/
 
 Inspiration
 https://youtu.be/w5ebcowAJD8?si=8rfokQfJIjvhfdb0
+
+- Total Number of Data Codewords for this Version and EC Level  
+    For Version: 3, EC: Low 
+        Need 55
+- 1 Group
+- 1 Block per Group
+- 55 Codewords per Block
+- 15 EC Codewords per Block
+
+Reed-Solomon Error correction and The Galois Field
+
+Reed-Solomon Error correction - Uses polynomial division to encode data  
+
+Galois field - restricts the set of numbers and 
+    mathmatical operations to keep numbers in that set
+
+QR Codes use Galois Field 256, sometimes written as GF(256)
+
