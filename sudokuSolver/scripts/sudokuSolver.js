@@ -1,4 +1,4 @@
-class SudokuSolver {
+export default class SudokuSolver {
     constructor(grid){
         this.grid = grid;
     }
@@ -26,12 +26,12 @@ class SudokuSolver {
     }
 
     inBox(value, row, col){
-        boxRow = row - (row % 3);
-        boxCol = col - (col % 3);
+        let boxRow = row - (row % 3);
+        let boxCol = col - (col % 3);
 
-        for(let i = 0; i < 3; i++)
+        for(let i = boxRow; i < boxRow + 3; i++)
         {
-            for(let j = 0; j < 3; j++)
+            for(let j = boxCol; j < boxCol + 3; j++)
             {
                 if(this.grid[i][j] == value)
                 {

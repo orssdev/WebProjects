@@ -15,7 +15,7 @@ div#wrapper {
     gap: 25px;
     width: 100vw;
     height: 100vh;
-    background-color: #333333;
+    background-color: black;
 }
 
 h1 {
@@ -37,9 +37,6 @@ tr:last-child {
 
 td {
     color: black;
-    width: 60px;
-    height: 60px;
-    text-align: center;
     border: 3px solid black;
 }
 
@@ -58,16 +55,13 @@ div#inputContainer {
     gap: 10px;
 }
 
-div#input {
-    width: 60px;
-    height: 60px;
-    text-align: center;
-    align-content: center;
-}
-
 .box {
     background-color: white;
     font-size: 2em;
+    text-align: center;
+    align-content: center;
+    width: 60px;
+    height: 60px;
 }
 
 .box:hover {
@@ -80,6 +74,19 @@ div#input {
     background-color: #ff5555;
 }
 
+div#buttonContainer {
+    display: flex;
+    gap: 25px;
+}
+
+div#solveButton {
+    width: 120px;
+}
+
+div#clearButton {
+    width: 120px;
+}
+
 @media (width < 600px)
 {
    td {
@@ -90,11 +97,11 @@ div#input {
    div#inputContainer {
     display: flex;
     flex-wrap: wrap;
-    width: 80vw;
-}
+    width: 70vw;
+    }
 
-div#input {
-    width: 40px;
-    height: 40px;
-}
+    .box {
+        width: 40px;
+        height: 40px;
+    }
 }
